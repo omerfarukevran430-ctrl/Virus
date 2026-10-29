@@ -1,8 +1,3 @@
-Basit, temiz bir HTML sayfası hazırladım. İstediğin metin, indirme linki ve sağ üstte **ömer studio** yazısı var.  
-
-Aşağıdaki kodu kopyalayıp `index.html` olarak kaydedebilirsin:  
-
-```html
 <!DOCTYPE html>
 <html lang="tr">
 <head>
@@ -37,6 +32,35 @@ Aşağıdaki kodu kopyalayıp `index.html` olarak kaydedebilirsin:
             color: #00d9ff;
             letter-spacing: 1px;
             text-shadow: 0 0 10px rgba(0, 217, 255, 0.4);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            user-select: none;
+        }
+
+        /* Rainbow animasyonu */
+        .studio.rainbow {
+            background: linear-gradient(
+                90deg,
+                #ff0000,
+                #ff7f00,
+                #ffff00,
+                #00ff00,
+                #0000ff,
+                #4b0082,
+                #8b00ff,
+                #ff0000
+            );
+            background-size: 400% 100%;
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: rainbowMove 3s linear infinite;
+            text-shadow: none;
+        }
+
+        @keyframes rainbowMove {
+            0% { background-position: 0% 50%; }
+            100% { background-position: 400% 50%; }
         }
 
         .container {
@@ -100,7 +124,7 @@ Aşağıdaki kodu kopyalayıp `index.html` olarak kaydedebilirsin:
     </style>
 </head>
 <body>
-    <div class="studio">ömer studio</div>
+    <div class="studio" id="studio">ömer studio</div>
 
     <div class="container">
         <h1>Selam 👋</h1>
@@ -122,8 +146,13 @@ Aşağıdaki kodu kopyalayıp `index.html` olarak kaydedebilirsin:
             Sadece test / eğlence amaçlıdır
         </div>
     </div>
+
+    <script>
+        const studio = document.getElementById('studio');
+
+        studio.addEventListener('click', () => {
+            studio.classList.toggle('rainbow');
+        });
+    </script>
 </body>
 </html>
-```
-
-İstersen renkleri, yazı boyutlarını veya tasarımı değiştirebilirim.
